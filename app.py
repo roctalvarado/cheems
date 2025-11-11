@@ -9,4 +9,6 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
+    # Ejecuta Flask con la configuración predeterminada
+    # app.run()
     app.run(host='0.0.0.0', port=5000)
