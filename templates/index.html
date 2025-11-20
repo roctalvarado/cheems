@@ -171,7 +171,31 @@
     </section>
   </div>
  
- 
+    <div class="modal fade" id="modal-winner" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content text-center">
+        <div class="modal-body">
+          <h2 class="mb-3 text-start">¡Ganaste!</h2>
+          <p class="lead mb-6 text-start">Registra tus datos para inscribirte en la lista de ganadores</p>
+          <!--<form class="text-start mb-3">-->
+            <div class="form-floating mb-4">
+              <input type="text" class="form-control" placeholder="name" id="name">
+              <label>Nombre</label>
+            </div>
+            <div class="form-floating mb-4">
+              <input type="email" class="form-control" placeholder="email" id="email">
+              <label>Correo</label>
+            </div>
+            <div class="form-floating mb-4">
+              <input type="text" class="form-control" placeholder="phrase" id="phrase">
+              <label>Frase</label>
+            </div>
+            <a class="btn btn-primary rounded-pill btn-login w-100 mb-2" id="btn-save">Guardar</a>
+          <!--</form>-->
+        </div> 
+      </div> 
+    </div> 
+  </div>
   <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
   <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
   <script src="{{ url_for('static', filename='js/cheems.js') }}"></script>
