@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(result.success) {
                 alert("El registro fue guardado correctamente");
             } else {
-                alert("No se pudo guardar. Intenta más tarde")
+                alert("No se pudo guardar. Intenta más tarde");
             }
         })
 

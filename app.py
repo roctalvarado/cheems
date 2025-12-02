@@ -23,6 +23,10 @@ def save_winner():
     else:
         return jsonify({'success': False}), 500
 
+@app.route('/winners', methods=['GET'])
+def get_winners():
+    return render_template('winners.html', winners = Winner.get_all())
+
 if __name__ == '__main__':
     # Ejecuta Flask con la configuración predeterminada, la cual es:
     # localhost (127.0.0.1) No permite conexiones externas
