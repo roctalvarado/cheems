@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 name: name,
                 email: email,
                 phrase: phrase,
-                attempts: intentos
+                // attempts: attempts
             })
         })
 

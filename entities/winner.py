@@ -1,13 +1,13 @@
 from persistence.db import get_connection
 
 class Winner:
-    def __init__(self, id, name, email, phrase, attempts):
+    def __init__(self, id, name, email, phrase):
         self.id = id
         self.name = name
         self.email = email
         self.phrase = phrase
         # Número de intentos
-        self.attempts = attempts
+        # self.attempts = attempts
 
     def save(self):
         try:
