@@ -1,11 +1,13 @@
 from persistence.db import get_connection
 
 class Winner:
-    def __init__(self, id, name, email, phrase):
+    def __init__(self, id, name, email, phrase, attempts):
         self.id = id
         self.name = name
         self.email = email
         self.phrase = phrase
+        # Número de intentos
+        self.attempts = attempts
 
     def save(self):
         try:
@@ -35,6 +37,9 @@ class Winner:
         try:
             connection = get_connection()
             cursor = connection.cursor()
+
+            # TODO: Ordenar por intentos y fecha
+            # ORDER BY attempts ASC, date DESC
 
             query = "SELECT id, name, email, phrase FROM winners"
             cursor.execute(query)

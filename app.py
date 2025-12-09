@@ -27,11 +27,16 @@ def save_winner():
 def get_winners():
     return render_template('winners.html', winners = Winner.get_all())
 
+# TODO: Crear ruta para eliminar ganador
+# @app.route('/winner/delete/<int:id>', methods=['POST'])
+# def delete_winner(id):
+
 if __name__ == '__main__':
     # Ejecuta Flask con la configuración predeterminada, la cual es:
     # localhost (127.0.0.1) No permite conexiones externas
     # Puerto 5000
     # app.run()
+    app.run(debug=True)
 
     # Lo cambiamos para permitir conexiones internas desde la IP dinámica
     app.run(host='0.0.0.0', port=5000)

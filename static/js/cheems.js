@@ -1,16 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    document.getElementById("btn-save").addEventListener("click", saveWinner);
+    const imagenes = document.querySelectorAll(".cheems-card img");
 
-    const randomNumber = Math.floor(Math.random() * 14) + 1;
+    const IMG_QUESTION = imagenes[0].src;
 
-    const imagenes = document.querySelectorAll(".cheems-card img")
-
-    // TODO: Eliminar antes de publicar el juego
-    console.debug("Número random " + randomNumber);
+    let randomNumber = 0;
 
     const clickCards = new Set();
 
+    let attempts = 1;
+
+    document.getElementById("btn-save").addEventListener("click", saveWinner);
+
+    const btnReset = document.getElementById("btn-reset");
+
+    if (btnReset) {
+        btnReset.addEventListener("click", resetBoard)
+    }
+
+    initBoard();
+    
     imagenes.forEach((img, index) => {
         const id = index + 1;
         img.dataset.id = id;
@@ -18,37 +27,56 @@ document.addEventListener("DOMContentLoaded", () => {
         img.addEventListener("click", () => {
 
             if(!clickCards.has(id)) {
-            clickCards.add(id);
+                clickCards.add(id);
 
-            if(id == randomNumber) {
-                img.src = window.IMG_BAD
+                if(id == randomNumber) {
+                    img.src = window.IMG_BAD;
 
-                imagenes.forEach((img) => {
-                    if (img.dataset.id != randomNumber) {
-                        img.src = window.IMG_OK
+                    imagenes.forEach((img) => {
+                        if (img.dataset.id != randomNumber) {
+                            img.src = window.IMG_OK;
+                        }
+                    })
+                    // Perder
+                } else {
+                    img.src = window.IMG_OK;
+
+                    // Ganar
+                    if(clickCards.size == 14) {
+                        const modal = new bootstrap.Modal(document.getElementById("modal-winner"));
+                        modal.show();
                     }
-                })
-                // alert("Perdiste")
-            } else {
-                img.src = window.IMG_OK;
-                // alert("Ganaste")
-
-                if(clickCards.size == 14) {
-                    const modal = new bootstrap.Modal(document.getElementById("modal-winner"));
-                    modal.show();
                 }
             }
-        }
-        })
-    })
+        });
+    });
+
+    function initBoard() {
+        randomNumber = Math.floor(Math.random() * 14) + 1;
+        console.debug("Nuevo intento. Cheems está en: " + randomNumber);
+
+        // Limpiar cartas volteadas
+        clickCards.clear();
+
+        imagenes.forEach(img => {
+            img.src = IMG_QUESTION;
+        });
+    }
+
+    function resetBoard() {
+        // Sumar 1
+        attempts++
+        console.debug("Tablero reiniciado. Intento número: " + attempts);
+
+        initBoard();
+    }
+    
 
     function saveWinner() {
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
         const phrase = document.getElementById("phrase").value.trim();
 
-
-        // Operador OR ||
         if(!name || !email || !phrase) {
             alert("Por favor completa todos los campos");
             return;
@@ -63,6 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 name: name,
                 email: email,
                 phrase: phrase,
+                attempts: intentos
             })
         })
 

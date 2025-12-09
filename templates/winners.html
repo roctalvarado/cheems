@@ -7,12 +7,15 @@
         <h2 class="display-4 mb-3 text-center">Buscaminas Cheems</h2>
         <p class="lead text-center mb-10 px-md-16 px-lg-0">Lista de ganadores</p>
 
-        <table>
+        <table id="winners-table" class="table">
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Frase</th>
+                    <td>Intentos</td>
+                    <td>Fecha y Hora</td>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,10 +24,19 @@
                     <td>{{ w.name }}</td>
                     <td>{{ w.email }}</td>
                     <td>{{ w.phrase }}</td>
+                    <td>
+                        {# Intentos #}
+                    </td>
+                    <td>
+                        {# Fecha/Hora #}
+                    </td>
+                    <td>
+                        {# Acción de eliminar #}
+                    </td>
                 </tr>
                 {% else %}
                 <tr>
-                    <td colspan="3">No hay registros.</td>
+                    <td colspan="6">No hay registros.</td>
                 </tr>
                 {% endfor %}
             </tbody>

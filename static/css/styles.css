@@ -40525,3 +40525,8 @@ footer.bg-dark.angled.upper-start:before {
   box-shadow: 0 .25rem .75rem rgba(30,34,40,.15);
   cursor: pointer;
 }
+
+.reset-container {
+  margin-bottom: 10px;
+  text-align: right;
+}
