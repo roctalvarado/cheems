@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const clickCards = new Set();
 
+    let gameOver = false;
+
     let attempts = 1;
 
     document.getElementById("btn-save").addEventListener("click", saveWinner);
@@ -26,10 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         img.addEventListener("click", () => {
 
+            if (gameOver) return;
+
             if(!clickCards.has(id)) {
                 clickCards.add(id);
 
                 if(id == randomNumber) {
+                    gameOver = true;
+
                     img.src = window.IMG_BAD;
 
                     const card = img.closest('.cheems-card');
@@ -43,6 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
                             img.src = window.IMG_OK;
                         }
                     })
+
+                    
+
                     // Perder
                 } else {
                     img.src = window.IMG_OK;
@@ -64,7 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function initBoard() {
-        randomNumber = Math.floor(Math.random() * 14) + 1;
+        gameOver = false;
+
+        randomNumber = Math.floor(Math.random() * 15) + 1;
         console.debug("Nuevo intento. Cheems está en: " + randomNumber);
 
         // Limpiar cartas volteadas
@@ -72,6 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         imagenes.forEach(img => {
             img.src = IMG_QUESTION;
+            const card = img.closest('.cheems-card');
+            if (card) {
+                card.classList.remove("shaking");
+            }
         });
 
     }
