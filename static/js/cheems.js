@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 name: name,
                 email: email,
                 phrase: phrase,
-                // attempts: attempts
+                attempts: attempts
             })
         })
 
@@ -106,6 +106,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(result => {
             if(result.success) {
                 alert("El registro fue guardado correctamente");
+
+                attempts = 1;
             } else {
                 alert("No se pudo guardar. Intenta más tarde");
             }
