@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 from entities.winner import Winner
 
 # Inicialización de un constructor
@@ -27,9 +27,13 @@ def save_winner():
 def get_winners():
     return render_template('winners.html', winners = Winner.get_all())
 
-# TODO: Crear ruta para eliminar ganador
-# @app.route('/winner/delete/<int:id>', methods=['POST'])
-# def delete_winner(id):
+# Crear ruta para eliminar ganador
+@app.route('/winner/delete/<int:id>', methods=['POST'])
+def delete_winner(id):
+    success = Winner.delete(id)
+    
+    return redirect(url_for('get_winners'))
+
 
 if __name__ == '__main__':
     # Ejecuta Flask con la configuración predeterminada, la cual es:
