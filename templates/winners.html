@@ -1,11 +1,47 @@
 {% include 'header.html' %}
 
 
+    <style>
+    #winners-table {
+      border: 4px solid #064e0a;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    #winners-table th {
+      background-color: #0a7a12;
+      color: white;
+      padding: 10px;
+      border: 1px solid #064e0a;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    #winners-table td {
+      padding: 10px;
+      border: 1px solid #064e0a;
+    }
+
+    #winners-table tbody tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+
+    #winners-table tbody tr:nth-child(even) {
+      background-color: #d8f3dc;
+    }
+
+    .ganadores-title-table {
+      text-align: center;
+      font-weight: bold;
+      color: #0a7a12;
+    }
+    </style>
+
     <section id="snippet-3" class="wrapper bg-light wrapper-border">
       <div class="container pt-5 pb-13">
 
-        <h2 class="display-4 mb-3 text-center">Buscaminas Cheems</h2>
-        <p class="lead text-center mb-10 px-md-16 px-lg-0">Lista de ganadores</p>
+        <h2 class="display-4 mb-3 ganadores-title">Buscaminas Cheems</h2>
+        <p class="lead mb-10 px-md-16 px-lg-0 ganadores-title-table">Lista de ganadores</p>
 
         <table id="winners-table" class="table">
             <thead>
@@ -13,8 +49,8 @@
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Frase</th>
-                    <td>Intentos</td>
-                    <td>Fecha y Hora</td>
+                    <th>Intentos</th>
+                    <th>Fecha y Hora</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -24,18 +60,12 @@
                     <td>{{ w.name }}</td>
                     <td>{{ w.email }}</td>
                     <td>{{ w.phrase }}</td>
+                    <td>{{ w.attempts }}</td>
+                    <td>{{ w.date }}</td>
                     <td>
-                        {{ w.attempts }}
-                    </td>
-                    <td>
-                        {{ w.date }}
-                    </td>
-                    <td>
-                         <form action="{{ url_for('delete_winner', id=w.id) }}"
-                        method="post"
-                        onsubmit="return confirm('¿Seguro que quieres eliminar este registro?');">
-                      <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                  </form> 
+                      <form action="{{ url_for('delete_winner', id=w.id) }}" method="post" onsubmit="return confirm('¿Seguro que quieres eliminar este registro?');">
+                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                      </form>
                     </td>
                 </tr>
                 {% else %}
@@ -46,8 +76,6 @@
             </tbody>
         </table>
 
-        </div>
- 
       </div>
     </section>
 
