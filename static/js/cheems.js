@@ -32,6 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 if(id == randomNumber) {
                     img.src = window.IMG_BAD;
 
+                    const card = img.closest('.cheems-card');
+
+                    if (card) {
+                        card.classList.add("shaking");
+                    }
+
                     imagenes.forEach((img) => {
                         if (img.dataset.id != randomNumber) {
                             img.src = window.IMG_OK;
@@ -45,6 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     if(clickCards.size == 14) {
                         const modal = new bootstrap.Modal(document.getElementById("modal-winner"));
                         modal.show();
+                        confetti({
+                            particleCount: 150,
+                            spread: 70,
+                            origin: { y: 0.6 },
+                            zIndex: 2000
+                        });
                     }
                 }
             }
