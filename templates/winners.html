@@ -40,8 +40,14 @@
     <section id="snippet-3" class="wrapper bg-light wrapper-border">
       <div class="container pt-5 pb-13">
 
-        <h2 class="display-4 mb-3 ganadores-title">Buscaminas Cheems</h2>
+        <h2 class="display-4 mb-3 ganadores-title text-center">Buscaminas Cheems</h2>
         <p class="lead mb-10 px-md-16 px-lg-0 ganadores-title-table">Lista de ganadores</p>
+
+        <div class="mb-4 d-flex justify-content-end">
+            <a href="{{ url_for('index') }}" class="btn btn-primary rounded-pill">
+                ← Volver al Juego
+            </a>
+        </div>
 
         <table id="winners-table" class="table">
             <thead>

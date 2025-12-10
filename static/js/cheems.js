@@ -73,12 +73,18 @@ document.addEventListener("DOMContentLoaded", () => {
         imagenes.forEach(img => {
             img.src = IMG_QUESTION;
         });
+
     }
 
     function resetBoard() {
         // Sumar 1
         attempts++
         console.debug("Tablero reiniciado. Intento número: " + attempts);
+
+        const attemptsSpan = document.getElementById("attempts-counter")
+        if (attemptsSpan) {
+            attemptsSpan.innerText = "Intentos: " + attempts;
+        }
 
         initBoard();
     }
@@ -120,6 +126,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 alert("El registro fue guardado correctamente");
 
                 attempts = 1;
+
+                const attemptsSpan = document.getElementById("attempts-counter");
+                if(attemptsSpan) {
+                    attemptsSpan.innerText = "Intentos: 1";
+                }
+
+                initBoard();
+                
+                // Cerrar modal al guardar registro
+                const modalElement = document.getElementById("modal-winner");
+                const modalInstance = bootstrap.Modal.getInstance(modalElement);
+                if (modalInstance) {
+                    modalInstance.hide();
+                }
+                
             } else {
                 alert("No se pudo guardar. Intenta más tarde");
             }
