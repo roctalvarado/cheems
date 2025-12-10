@@ -18,7 +18,7 @@ class Winner:
 
             # Consulta parametrizada
             query = "INSERT INTO winners (name, email, phrase, attempts, date) VALUES (%s, %s, %s, %s, NOW())"
-            cursor.execute(query, (self.name, self.email, self.phrase, self.attempts, self.date))
+            cursor.execute(query, (self.name, self.email, self.phrase, self.attempts))
             connection.commit()
 
             self.id = cursor.lastrowid
