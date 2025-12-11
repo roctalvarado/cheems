@@ -40,7 +40,6 @@ if __name__ == '__main__':
     # localhost (127.0.0.1) No permite conexiones externas
     # Puerto 5000
     # app.run()
-    app.run(debug=True)
 
     # Lo cambiamos para permitir conexiones internas desde la IP dinámica
     app.run(host='0.0.0.0', port=5000)
