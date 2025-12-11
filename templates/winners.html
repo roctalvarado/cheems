@@ -12,38 +12,46 @@
             </a>
         </div>
 
-        <table id="winners-table" class="table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Email</th>
-                    <th>Frase</th>
-                    <th>Intentos</th>
-                    <th>Fecha y Hora</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for w in winners %}
-                <tr>
-                    <td>{{ w.name }}</td>
-                    <td>{{ w.email }}</td>
-                    <td>{{ w.phrase }}</td>
-                    <td>{{ w.attempts }}</td>
-                    <td>{{ w.date }}</td>
-                    <td>
-                      <form action="{{ url_for('delete_winner', id=w.id) }}" method="post" onsubmit="return confirm('¿Seguro que quieres eliminar este registro?');">
-                        <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                      </form>
-                    </td>
-                </tr>
-                {% else %}
-                <tr>
-                    <td colspan="6">No hay registros.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="table-responsive mt-4">
+            <table id="winners-table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Frase</th>
+                        <th class="text-center">Intentos</th>
+                        <th class="text-center">Fecha y Hora</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for w in winners %}
+                    <tr>
+                        <td class="ps-4 fw-bold">{{ w.name }}</td>
+                        <td>{{ w.email }}</td>
+                        <td class="fst-italic text-muted">"{{ w.phrase }}"</td>
+                        <td class="text-center">
+                            <span class="badge bg-success rounded-pill">{{ w.attempts }}</span>
+                        </td>
+                        <td class="text-secondary small text-center">{{ w.date }}</td>
+                        <td class="pe-4 text-center">
+                          <form action="{{ url_for('delete_winner', id=w.id) }}" method="post" onsubmit="return confirm('¿Seguro que quieres eliminar este registro?');" class="d-inline">
+                            <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill" title="Eliminar">
+                                <i class="bi bi-trash3-fill me-2"></i> Eliminar
+                            </button>
+                          </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center py-5 text-muted">
+                            No hay ganadores registrados aún.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
       </div>
     </section>
