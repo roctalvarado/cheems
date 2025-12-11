@@ -40554,12 +40554,12 @@ footer.bg-dark.angled.upper-start:before {
   animation-iteration-count: 1;
 }
 
-/* Tabla de ganadores: Bordes redondeados y cuadrícula verde completa */
+/* Tabla de ganadores */
 #winners-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  border: 4px solid #064e0a; /* Marco exterior muy grueso */
+  border: 4px solid #064e0a;
   border-radius: 15px;
   overflow: hidden;
   background-color: #fff;
@@ -40573,21 +40573,17 @@ footer.bg-dark.angled.upper-start:before {
   font-weight: bold;
   text-transform: uppercase;
   font-size: 0.9rem;
-  /* AUMENTADO: Líneas divisorias del encabezado a 2px */
   border-right: 4x solid #064e0a; 
   border-bottom: 4px solid #064e0a;
 }
 
-/* Celdas del cuerpo */
+/* Celdas */
 #winners-table tbody td {
   padding: 12px;
   vertical-align: middle;
-  /* AUMENTADO: Líneas internas del cuerpo a 2px */
   border-bottom: 4px solid #064e0a;
   border-right: 4px solid #064e0a;
 }
-
-/* --- Limpieza de bordes (Sin cambios) --- */
 
 #winners-table thead th:last-child,
 #winners-table tbody td:last-child {
